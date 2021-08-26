@@ -1,0 +1,11 @@
+{
+    "name": "utility",
+    "version": "3.0.2",
+    "description": "minimal JS utility functionality",
+    "author": "Dustin Hansen",
+    "license": "MIT",
+    "main": "dist/module.cjs.js",
+    "module": "dist/module.esm.js",
+    "unpkg": "dist/cdn.min.js",
+    "dependencies": {}
+}

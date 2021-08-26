@@ -1,0 +1,4 @@
+node_modules
+scratch.md
+dist/
+.env.json
