@@ -5,12 +5,14 @@
         "packages/*"
     ],
     "devDependencies": {
-        "axios": "^0.21.1",
         "brotli-size": "^4.0.0",
         "chalk": "^4.1.1",
         "dot-json": "^1.2.2",
         "esbuild": "^0.8.39"
     },
+    "main": "packages/utility/dist/module.cjs.js",
+    "module": "packages/utility/dist/module.esm.js",
+    "unpkg": "packages/utility/dist/cdn.min.js",
     "scripts": {
         "build": "node ./scripts/build.js",
         "watch": "node ./scripts/build.js --watch"
