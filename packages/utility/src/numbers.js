@@ -1,5 +1,6 @@
 
 export default {
+    // added to prevent errors on VAR.toNumber where VAR is already a number
     toNumber: {
         set: function(){},
         get: function() {
@@ -9,6 +10,7 @@ export default {
         }
     },
     
+    // formats number as US currency
     toCurrency: {
         set: function(){},
         get: function() {

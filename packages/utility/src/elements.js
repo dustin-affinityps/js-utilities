@@ -12,7 +12,7 @@ export default {
         }
     },
 
-    // shorthand wrapper for array of elements selector
+    // shorthand wrapper for array of elements selector returns array rather than NodeList
     $$_: {
         set: function(){},
         get: function() {
@@ -25,6 +25,7 @@ export default {
         }
     },
 
+    // returns sibling elements
     siblingOf: {
         set: function(){},
         get: function() {
@@ -74,6 +75,7 @@ export default {
         }
     },
 
+    // test if this element matches selector, or is a child of selector
     isOrChildOf: {
         set: function(){},
         get: function() {
@@ -83,6 +85,17 @@ export default {
         }
     },
 
+    // tests if Element has class allows array of classes returns matching classes
+    hasClass: {
+        set: function(){},
+        get: function() {
+            return function(...selectors) {
+                return selectors.filter(s => this.classList.contains(s)).length == selectors.length;
+            }.bind(this)
+        }
+    },
+
+    // shorthand for Element.classList.add() allows array of classes
     addClass: {
         set: function(){},
         get: function() { 
@@ -94,6 +107,7 @@ export default {
         }
     },
 
+    // shorthand for Element.classList.remove() allows array of classes
     removeClass: {
         set: function(){},
         get: function() {
@@ -105,6 +119,7 @@ export default {
         }
     },
 
+    // shorthand for Element.classList.toggle() allows array of classes
     toggleClass: {
         set: function(){},
         get: function() {
@@ -116,12 +131,13 @@ export default {
         }
     },
 
+    // swaps classes if removed class exists, or forced
     swapClass: {
         set: function(){},
         get: function() {
-            return function(aClass, rClass, force = false) {
-                if ( force || this.hasClass(rClass) ) {
-                    this.addClass(aClass).removeClass(rClass);
+            return function(classToAdd, classToRemove, force = false) {
+                if ( force || this.hasClass(classToRemove) ) {
+                    this.addClass(classToAdd).removeClass(classToRemove);
                 }
 
                 return this;
@@ -129,15 +145,7 @@ export default {
         }
     },
 
-    hasClass: {
-        set: function(){},
-        get: function() {
-            return function(...selectors) {
-                return selectors.filter(s => this.classList.contains(s)).length == selectors.length;
-            }.bind(this)
-        }
-    },
-
+    // shorthand for Element.setAttribute
     setAttr: {
         set: function(){},
         get: function() {
@@ -149,6 +157,7 @@ export default {
         }
     },
 
+    // shorthand for Element.setAttribute, allowing list of attributes. Defaults to setAttr if args not an Object
     setAttrs: {
         set: function(){},
         get: function() {
@@ -166,6 +175,7 @@ export default {
         }
     },
 
+    // shorthand for Element.removeAttribute
     removeAttr: {
         set: function(){},
         get: function() {
@@ -177,6 +187,7 @@ export default {
         }
     },
 
+    // shorthand for Element.removeAttribute, allowing list of attributes. Defaults to setAttr if args not an Object
     removeAttrs: {
         set: function(){},
         get: function() {
@@ -188,7 +199,7 @@ export default {
         }
     },
 
-    // remove all event listeners from element, while optionally maintaining child events
+    // remove all event listeners from element, while optionally preserving child events
     removeListeners: {
         set: function(){},
         get: function() {
@@ -210,6 +221,7 @@ export default {
         }
     },
 
+    // shorthand for Element.addEventListener allows array of event handlers to be specified in single call.
     addEvent: {
         set: function(){},
         get: function() {

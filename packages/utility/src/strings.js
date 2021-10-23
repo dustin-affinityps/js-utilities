@@ -1,5 +1,6 @@
 
 export default {
+    // converts string to US currency format
     toCurrency: {
         set: function(){},
         get: function() {
@@ -11,6 +12,7 @@ export default {
         }
     },
 
+    // attempts to force a string into a number
     toNumber: {
         set: function(){},
         get: function() {
@@ -21,6 +23,7 @@ export default {
         }
     },
 
+    // returns only the numbers of a string
     numbersOnly: {
         set: function(){},
         get: function() {
@@ -30,6 +33,7 @@ export default {
         }
     },
 
+    // lowercases first character in string
     lcFirst: {
         set: function(){},
         get: function() {
@@ -39,11 +43,22 @@ export default {
         }
     },
 
+    // uppercases first character in string
     ucFirst: {
         set: function(){},
         get: function() {
             return function() {
                 return this.replace(/\b([a-z])/, s => s.toUpperCase());
+            }.bind(this)
+        }
+    },
+
+    // uppercases first character for each "word" in string
+    ucWords: {
+        set: function(){},
+        get: function() {
+            return function() {
+                return this.replace(/\b([a-z])/g, s => s.toUpperCase());
             }.bind(this)
         }
     }
